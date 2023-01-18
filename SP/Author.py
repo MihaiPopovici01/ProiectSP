@@ -1,5 +1,8 @@
-class Author:
-    def __init__(self, name):
-        self.name = name
-    def __str__(self):
-        return self.name
+class Author(object):
+    author = str()
+
+    def __init__(self, author):
+        self.author = author
+
+    def print_(self):
+        print ("Author: " + self.author)

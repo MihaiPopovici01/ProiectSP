@@ -1,19 +1,22 @@
-from Author import *
-from Chapter import *
+from Section import *
 
-class Book:
-    def __init__(self, name):
-        self.name = name
-        self.chapters = []
-        
+class Book(Section):
+    authors = []
+
+    def __init__(self, title):
+        super(Book, self).__init__(title)
+
+    def addContent(self, content):
+        self.add(content)
+
     def addAuthor(self, author):
-        self.author = author.name
-    
-    def addChapter(self, name):
-        ch = Chapter(name)
-        self.chapters.append(ch)
-        return len(self.chapters) - 1
+        self.authors.append(author)
 
-    def __str__(self):
-        str ="Numele cartii: " + self.name + "\nNumele autorului: " + self.author
-        return str
+    def print_(self):
+        print ("Authors:")
+        for a in self.authors:
+            a.print_()
+        super(Book, self).print_()
+
+    def accept(self, v):
+        v.visitBook(self)
